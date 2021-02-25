@@ -6,7 +6,8 @@
             <field name="inherit_id" ref="product.product_template_form_view"/>
             <field name="arch" type="xml">
                 <field name="categ_id" position="after">
-                    <field name="brand_id"/>
+                    <field name="finished_product" invisible="1"/>
+                    <field name="brand_id" attrs="{'required': [('finished_product', '=', True)]}"/>
                 </field>
             </field>
         </record>
@@ -89,5 +90,6 @@
           </xpath>
         </field>
       </record>
+
     </data>
 </odoo>
