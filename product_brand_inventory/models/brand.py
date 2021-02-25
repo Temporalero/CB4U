@@ -26,7 +26,16 @@ class ProductBrand(models.Model):
     _inherit = 'product.template'
 
     brand_id = fields.Many2one('product.brand',string='Brand')
+    finished_product = fields.Boolean('Finished Product', compute='_compute_finished_product', store=True)
 
+    @api.depends('categ_id')
+    def _compute_finished_product(self):
+        ProductCategory = self.env['product.category']
+        pt_categ = ProductCategory.search([('name','=ilike','PT')], limit=1)
+        pt_categories = ProductCategory.search([('id','child_of',pt_categ.id)], limit=1).ids if pt_categ else []
+        for template in self:
+            self.finished_product = True if template.categ_id.id in pt_categories else False
+ 
 
 class BrandProduct(models.Model):
     _name = 'product.brand'
@@ -48,5 +57,3 @@ class BrandReportStock(models.Model):
 
     brand_id  = fields.Many2one(related='product_id.brand_id',
         string='Brand', store=True, readonly=True)
-
-
