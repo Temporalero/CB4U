@@ -28,11 +28,13 @@ class ProductBrand(models.Model):
     brand_id = fields.Many2one('product.brand',string='Brand')
     finished_product = fields.Boolean('Finished Product', compute='_compute_finished_product', store=True)
 
+    @api.onchange('categ_id')
     @api.depends('categ_id')
     def _compute_finished_product(self):
         ProductCategory = self.env['product.category']
         pt_categ = ProductCategory.search([('name','=ilike','PT')], limit=1)
-        pt_categories = ProductCategory.search([('id','child_of',pt_categ.id)], limit=1).ids if pt_categ else []
+        pt_categories = ProductCategory.search([('id','child_of',pt_categ.id)]).ids if pt_categ else []
+        print("__pt_categories", pt_categories)
         for template in self:
             self.finished_product = True if template.categ_id.id in pt_categories else False
  
