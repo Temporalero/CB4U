@@ -28,7 +28,6 @@ class ProductBrand(models.Model):
     brand_id = fields.Many2one('product.brand',string='Brand')
     finished_product = fields.Boolean('Finished Product', compute='_compute_finished_product', store=True)
 
-    @api.onchange('categ_id')
     @api.depends('categ_id')
     def _compute_finished_product(self):
         ProductCategory = self.env['product.category']
