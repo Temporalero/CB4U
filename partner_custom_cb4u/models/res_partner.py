@@ -20,8 +20,8 @@ class Partner(models.Model):
 
     _sql_constraints = [
         ('vat_uniq', 'unique (vat)', "El RFC ya existe !"),
-        ('check_supplier_bank_count', 'CHECK (supplier_rank = 0 OR (supplier_rank > 0 AND bank_item_count > 0))', "Un Proveedor debe tener al menos una cuanta Bancaria !"),
-        ('check_customer_analytic', 'CHECK (customer_rank = 0 OR (customer_rank > 0 AND analytic_account_id IS NOT NULL))', "Un Cliente debe tener cuenta Analitica !"),
+        #('check_supplier_bank_count', 'CHECK (supplier_rank = 0 OR (supplier_rank > 0 AND bank_item_count > 0))', "Un Proveedor debe tener al menos una cuanta Bancaria !"),
+        #('check_customer_analytic', 'CHECK (customer_rank = 0 OR (customer_rank > 0 AND analytic_account_id IS NOT NULL))', "Un Cliente debe tener cuenta Analitica !"),
     ]
 
 
