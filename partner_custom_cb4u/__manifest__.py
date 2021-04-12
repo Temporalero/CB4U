@@ -10,9 +10,9 @@
     'version': '0.1',
     'depends': ['sale','account'],
     'data': [
+        'security/ir.model.access.csv',
         'views/res_partner_views.xml',
     ],
     'installable': True,
-    #'application': True,
     
 }
