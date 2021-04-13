@@ -17,12 +17,21 @@ class Partner(models.Model):
     analytic_account_id = fields.Many2one(
         'account.analytic.account', 'Analytic Account',
         help="The analytic account related to a Customer.")
+    segment_id = fields.Many2one('res.partner.segment', 'Segmento')
 
     _sql_constraints = [
         ('vat_uniq', 'unique (vat)', "El RFC ya existe !"),
         #('check_supplier_bank_count', 'CHECK (supplier_rank = 0 OR (supplier_rank > 0 AND bank_item_count > 0))', "Un Proveedor debe tener al menos una cuanta Bancaria !"),
         #('check_customer_analytic', 'CHECK (customer_rank = 0 OR (customer_rank > 0 AND analytic_account_id IS NOT NULL))', "Un Cliente debe tener cuenta Analitica !"),
     ]
+
+
+class ResPartnerSegment(models.Model):
+    _description = 'Segmento'
+    _name = "res.partner.segment"
+    _order = "name"
+
+    name = fields.Char('Name', translate=True)
 
 
 class SaleOrder(models.Model):
