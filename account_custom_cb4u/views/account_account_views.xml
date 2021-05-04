@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="view_account_invoice_filter" model="ir.ui.view">
+            <field name="name">account.invoice.select.cb4u</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_user_id']" position="after">
+                    <field name="segment_id"/>
+                </xpath>
+                <xpath expr="//group/filter[@name='status']" position="after">
+                    <filter string="Segmento" name="segment" domain="[]" context="{'group_by':'segment_id'}"/>
+                </xpath>
+            </field>
+        </record>
+
+</odoo>
