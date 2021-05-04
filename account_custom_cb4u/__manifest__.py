@@ -8,7 +8,7 @@
     'website': 'https://www.workana.com/freelancer/90449a268cbe15ca4d54379c2a400f9a',
     'category': 'Account',
     'version': '0.1',
-    'depends': ['account','partner_custom_cb4u'],
+    'depends': ['account_reports','partner_custom_cb4u'],
     'data': [
         #'security/ir.model.access.csv',
         'views/account_account_views.xml',
