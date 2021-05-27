@@ -91,11 +91,10 @@ class ReportAccountAgedPartner(models.AbstractModel):
     def _get_column_details(self, options):
         return [
             self._header_column(),
-            #self._field_column('report_date'),
-            #self._field_column('journal_code', name="Journal"),
-            #self._field_column('account_name', name="Account"),
-            #self._field_column('expected_pay_date'),
-            self._field_column('partner_name'),
+            self._field_column('report_date'),
+            self._field_column('journal_code', name="Journal"),
+            self._field_column('account_name', name="Account"),
+            self._field_column('expected_pay_date'),
             self._field_column('period0', name=_("As of: %s") % format_date(self.env, options['date']['date_to'])),
             self._field_column('period1', sortable=True),
             self._field_column('period2', sortable=True),
@@ -113,7 +112,8 @@ class ReportAccountAgedPartner(models.AbstractModel):
 
     def _get_hierarchy_details(self, options):
         return [
-            self._hierarchy_level('segment_id', foldable=True, namespan=5),
+            self._hierarchy_level('segment_id', foldable=True, namespan=3),
+            self._hierarchy_level('partner_id', foldable=True, namespan=3),
             self._hierarchy_level('id'),
         ]
 
