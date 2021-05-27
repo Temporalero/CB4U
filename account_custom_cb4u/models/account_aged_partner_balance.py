@@ -84,6 +84,33 @@ class ReportAccountAgedPartner(models.AbstractModel):
         }
         return self.env.cr.mogrify(query, params).decode(self.env.cr.connection.encoding)
 
+    ####################################################
+    # COLUMNS/LINES
+    ####################################################
+    @api.model
+    def _get_column_details(self, options):
+        return [
+            self._header_column(),
+            #self._field_column('report_date'),
+            #self._field_column('journal_code', name="Journal"),
+            #self._field_column('account_name', name="Account"),
+            #self._field_column('expected_pay_date'),
+            self._field_column('partner_name'),
+            self._field_column('period0', name=_("As of: %s") % format_date(self.env, options['date']['date_to'])),
+            self._field_column('period1', sortable=True),
+            self._field_column('period2', sortable=True),
+            self._field_column('period3', sortable=True),
+            self._field_column('period4', sortable=True),
+            self._field_column('period5', sortable=True),
+            self._custom_column(  # Avoid doing twice the sub-select in the view
+                name=_('Total'),
+                classes=['number'],
+                formatter=self.format_value,
+                getter=(lambda v: v['period0'] + v['period1'] + v['period2'] + v['period3'] + v['period4'] + v['period5']),
+                sortable=True,
+            ),
+        ]
+
     def _get_hierarchy_details(self, options):
         return [
             self._hierarchy_level('segment_id', foldable=True, namespan=5),
