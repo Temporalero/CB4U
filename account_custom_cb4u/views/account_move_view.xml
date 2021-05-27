@@ -7,6 +7,8 @@
       <field name="inherit_id" ref="account.view_move_form"/>
       <field name="arch" type="xml">
         <xpath expr="//field[@name='invoice_payment_term_id']" position="after">
+          <br/>
+          <span>Fecha Promesa de Pago</span>
           <field name="invoice_date_end" placeholder="Seleccione"/>
         </xpath>
       </field>
