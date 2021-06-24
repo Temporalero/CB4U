@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+
+    <record id="inherit_edit_project" model="ir.ui.view">
+      <field name="name">inherith.project.project.form</field>
+      <field name="model">project.project</field>
+      <field name="inherit_id" ref="project.edit_project" />
+      <field name="arch" type="xml">
+        <div class="oe_title" position="after">
+          <group col="4">
+            <field name="category_id" placeholder="Select"/>
+            <field name="project_type_id" placeholder="Select" />
+            <field name="project_size_id" placeholder="Select" />
+          </group>
+        </div>
+      </field>
+    </record>
+
+    <record id="inherit_view_project_project_filter" model="ir.ui.view">
+      <field name="name">inherith.project.project.filter</field>
+      <field name="model">project.project</field>
+      <field name="inherit_id" ref="project.view_project_project_filter" />
+      <field name="arch" type="xml">
+        <filter name="Partner" position="after">
+          <filter string="Category" name="Category" context="{'group_by': 'category_id'}"/>
+          <filter string="Project Type" name="ProjectType" context="{'group_by': 'project_type_id'}"/>
+          <filter string="Project Size" name="ProjectSize" context="{'group_by': 'project_size_id'}"/>
+        </filter>
+      </field>
+    </record>
+
+  </data>
+</odoo>

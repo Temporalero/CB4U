@@ -1,0 +1,10 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+acc_project_type_system,acc.project.type.system,model_project_type,base.group_system,1,1,1,1
+acc_project_size_system,acc.project.size.system,model_project_size,base.group_system,1,1,1,1
+acc_project_type_user,acc.project.type.user,model_project_type,base.group_user,1,0,0,0
+acc_project_size_user,acc.project.size.user,model_project_size,base.group_user,1,0,0,0
+acc_project_type_group_project_manager,acc.project.type.group_project_manager,model_project_type,project.group_project_manager,1,1,1,1
+acc_project_size_group_project_manager,acc.project.size.group_project_manager,model_project_size,project.group_project_manager,1,1,1,1
+acc_project_type_group_project_user,acc.project.type.group_project_user,model_project_type,project.group_project_user,1,0,0,0
+acc_project_size_group_project_user,acc.project.size.group_project_user,model_project_size,project.group_project_user,1,0,0,0
+
