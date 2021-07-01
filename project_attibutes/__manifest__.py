@@ -18,6 +18,8 @@
     'data': [
         'security/ir.model.access.csv',
         'views/project_view.xml',
+        'views/project_type_view.xml',
+        'views/project_size_view.xml',
     ],
     'demo': [],
     'qweb': [],

@@ -11,7 +11,8 @@ class ProjectType(models.Model):
 
 
     name = fields.Char(
-        string="Description"
+        string="Description",
+        required=True
     )
 
 
@@ -20,9 +21,10 @@ class ProjectSize(models.Model):
     _name = "project.size"
     _description = 'Project Size'
     _rec_name = 'name'
-    _order = 'name'
+    _order = 'id'
 
 
     name = fields.Char(
-        string="Description"
+        string="Description",
+        required=True
     )
